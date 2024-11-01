@@ -2,6 +2,7 @@
 {
     public class Game
     {
+        Inventory myInventory = new Inventory();
         private Room? currentRoom;
         private Room? previousRoom;
 
@@ -64,6 +65,16 @@
                 {
                     case "look":
                         Console.WriteLine(currentRoom?.LongDescription);
+                        break;
+                        
+                    case "inventory":
+                        myInventory.ShowItems();
+                        break;
+
+                    case "search":
+                        Item item1 = new Item("Scrap", "This could be useful later.");
+                        Console.WriteLine($"You have searched around the area, and have found {item1.itemName}");
+                        myInventory.AddItem(item1);
                         break;
 
                     case "back":
@@ -128,6 +139,7 @@
             Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'inventory' to check out your inventory.");
+            Console.WriteLine("Type 'search' to search around for items.");
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");
         }
